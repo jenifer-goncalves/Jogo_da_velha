@@ -1,16 +1,38 @@
-# React + Vite
+# ❌⭕ Jogo da Velha (Tic-Tac-Toe) em React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um projeto clássico de Jogo da Velha desenvolvido em **React**, baseado no tutorial oficial da documentação do React, com foco em **refatoração de código**, aplicação de boas práticas e modernização do projeto.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎯 Sobre o Projeto
 
-## React Compiler
+O objetivo deste projeto é ir além do código básico disponibilizado na documentação oficial do React. A proposta consiste em pegar a implementação funcional do Jogo da Velha e **refatorá-la**, tornando o código mais limpo, modular, legível e de fácil manutenção.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🕹️ Regras & Funcionalidades
+- Tabuleiro clássico 3x3.
+- Alternância automática de turnos entre jogadores (**X** e **O**).
+- Detecção automática de vitória (linha, coluna ou diagonal) e de empate.
+- Exibição do status da partida em tempo real (Próximo jogador / Vencedor / Empate).
+- Histórico de jogadas que permite "voltar no tempo" para estados anteriores do jogo.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ O que foi Refatorado?
+
+Principais melhorias e boas práticas aplicadas durante a refatoração:
+
+- [x] **Componentização e Reutilização:** Separação das responsabilidades dos componentes em arquivos dedicados.
+- [x] **Hooks Modernos:** Uso eficiente do `useState` e simplificação do gerenciamento de estado.
+- [x] **Código Limpo (Clean Code):** Renomeação de variáveis para nomes semânticos e remoção de código redundante.
+- [x] **Estilização e Organização:** Ajuste na estrutura de arquivos e CSS para melhor usabilidade e organização.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **[React](https://react.dev/)**
+- **JavaScript (ES6+)**
+- **HTML5 & CSS3**
+- **[Vite](https://vitejs.dev/)** *(ou Create React App)*
+
+
