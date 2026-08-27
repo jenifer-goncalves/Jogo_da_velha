@@ -31,13 +31,17 @@ function Board({ xIsNext, squares, onPlay }) {
 
   // Verifica se a jogada atual gerou um vencedor
   const winner = calculateWinner(squares);
+  // Verifica se o tabuleiro está preenchido
+  const preenchido = !winner && squares.every((square) => square !== null);
   let status;
   
   // Define a mensagem de status da partida a ser exibida na tela
   if (winner) {
-    status = 'Winner: ' + winner; // Mensagem de Vitória
+    status = 'Vencedor: ' + winner; // Mensagem de Vitória
+  } else if (preenchido) {
+    status = 'Empate! Deu velha';
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O'); // Indica o próximo jogador
+    status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O'); // Indica o próximo jogador
   }
 
   return (
