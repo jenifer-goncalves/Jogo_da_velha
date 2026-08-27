@@ -5,15 +5,19 @@
 body {
   font-family: sans-serif;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px;
   padding: 0;
+  background-color: #502d55;
 }
 
 h1 {
   margin-top: 0;
   font-size: 22px;
+  color: aliceblue;
 }
 
 h2 {
