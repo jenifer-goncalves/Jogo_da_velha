@@ -48,16 +48,22 @@ export default function Game() {
   });
 
   return (
-    <div className="game">
+    <div className="game-container">
+    <h1 className="game-title">Jogo da Velha</h1>
+
+      <div className="game">
       {/* Lado esquerdo: Tabuleiro do jogo */}
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      
+      <p>Histórico de jogadas</p>
       {/* Lado direito: Lista com o histórico de jogadas */}
       <div className="game-info">
+        
         <ol>{moves}</ol>
       </div>
     </div>
+    </div>
+      
   );
 }

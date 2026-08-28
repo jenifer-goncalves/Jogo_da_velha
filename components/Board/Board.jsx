@@ -1,71 +1,60 @@
-import Square from "../Square/Square.jsx";
+import styles from './Board.module.css'
+import Square from '../Square/Square.jsx'
 
-// COMPONENTE: Board (Tabuleiro)
-// Gerencia a exibição das 9 casas e a verificação do vencedor da rodada.
-// Recebe:
-// - 'xIsNext': booleano que indica se é a vez do 'X'
-// - 'squares': array com o estado atual de todas as 9 casas
-// - 'onPlay': função callback para atualizar o jogo ao fazer uma jogada
 function Board({ xIsNext, squares, onPlay }) {
-  
-  // Função executada quando o usuário clica em uma casa específica (índice i)
+  // Executa a função que calcula o vencedor e retorna o objeto ou null
+  const infoVitoria = calculateWinner(squares);
+
   function handleClick(i) {
-    // REGRA DE NEGÓCIO: Se já houver um vencedor ou se a casa já estiver ocupada, ignora o clique
-    if (calculateWinner(squares) || squares[i]) {
+    // Bloqueia a jogada se já houver um vencedor ou se o quadrado já estiver ocupado
+    if (infoVitoria || squares[i]) {
       return;
     }
-    
-    // Imutabilidade: Cria uma cópia do array de casas em vez de alterar o original diretamente
+
     const nextSquares = squares.slice();
-    
-    // Define qual símbolo será inserido com base na vez do jogador
-    if (xIsNext) {
-      nextSquares[i] = 'X';
-    } else {
-      nextSquares[i] = 'O';
-    }
-    
-    // Notifica o componente pai (Game) sobre o novo estado do tabuleiro
+    nextSquares[i] = xIsNext ? 'X' : 'O';
     onPlay(nextSquares);
   }
 
-  // Verifica se a jogada atual gerou um vencedor
-  const winner = calculateWinner(squares);
-  // Verifica se o tabuleiro está preenchido
-  const preenchido = !winner && squares.every((square) => square !== null);
+  // Função auxiliar para renderizar cada Square de forma limpa
+  function renderSquare(i) {
+    return (
+      <Square
+        value={squares[i]}
+        onSquareClick={() => handleClick(i)}
+        // Converte para booleano: true se houver vitória E o índice 'i' estiver na linha vencedora
+        isWinning={Boolean(infoVitoria && infoVitoria.line.includes(i))}
+      />
+    );
+  }
+
+  // Montagem do status da partida
   let status;
-  
-  // Define a mensagem de status da partida a ser exibida na tela
-  if (winner) {
-    status = 'Vencedor: ' + winner; // Mensagem de Vitória
-  } else if (preenchido) {
-    status = 'Empate! Deu velha';
+  if (infoVitoria) {
+    status = 'Vencedor: ' + infoVitoria.winner;
   } else {
-    status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O'); // Indica o próximo jogador
+    status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
-    <>
-      {/* Exibe o status do jogo */}
-      <div className="status">{status}</div>
-      
-      {/* Renderiza as 3 linhas do tabuleiro, cada uma contendo 3 componentes Square */}
-      <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+    <div className={styles.boardContainer}>
+      <div className="h4 mb-3 text-center">{status}</div>
+      <div className="d-flex">
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
-      <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+      <div className="d-flex">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
       </div>
-      <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+      <div className="d-flex">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -78,24 +67,23 @@ export default Board
 function calculateWinner(squares) {
   // Todas as 8 combinações possíveis de vitória no Jogo da Velha
   const lines = [
-    [0, 1, 2], // Linha 1
-    [3, 4, 5], // Linha 2
-    [6, 7, 8], // Linha 3
-    [0, 3, 6], // Coluna 1
-    [1, 4, 7], // Coluna 2
-    [2, 5, 8], // Coluna 3
-    [0, 4, 8], // Diagonal principal
-    [2, 4, 6], // Diagonal secundária
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontais
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticais
+    [0, 4, 8], [2, 4, 6]             // Diagonais
   ];
-  
-  // Percorre todas as combinações
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    // Se a posição 'a' não for nula e for igual a 'b' e 'c', temos um vencedor
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a]; // Retorna 'X' ou 'O'
+      // Retorna o objeto contendo o vencedor e o array com as 3 posições premiadas
+      return {
+        winner: squares[a],
+        line: [a, b, c]
+      };
     }
   }
-  return null; // Retorna null se ainda não houver vencedor
+
+  return null;
 }
+
 
