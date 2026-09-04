@@ -56,7 +56,6 @@ export default function Game() {
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <p>Histórico de jogadas</p>
       {/* Lado direito: Lista com o histórico de jogadas */}
       <div className="game-info">
         

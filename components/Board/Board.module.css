@@ -1,0 +1,12 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column; /* Organiza as linhas na vertical */
+  gap: 3px;               /* Define o espaçamento VERTICAL entre cada linha */
+  align-items: center;    /* Centraliza o conteúdo horizontalmente */
+}
+
+/* Classe aplicada em cada div de linha (board-row) */
+.boardRow {
+  display: flex;          /* Organiza os 3 quadrados na horizontal */
+  gap: 3px;               /* Define o espaçamento HORIZONTAL entre cada quadrado */
+}

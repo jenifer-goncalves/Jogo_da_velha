@@ -23,7 +23,7 @@ function Board({ xIsNext, squares, onPlay }) {
         value={squares[i]}
         onSquareClick={() => handleClick(i)}
         // Converte para booleano: true se houver vitória E o índice 'i' estiver na linha vencedora
-        isWinning={Boolean(infoVitoria && infoVitoria.line.includes(i))}
+        isWinning={Boolean(infoVitoria && infoVitoria.linha.includes(i))}
       />
     );
   }
@@ -32,24 +32,26 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (infoVitoria) {
     status = 'Vencedor: ' + infoVitoria.winner;
-  } else {
+  } else if (!infoVitoria) {
     status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O');
+  } else {
+    status = 'Empate: deu velha'
   }
 
   return (
     <div className={styles.boardContainer}>
       <div className="h4 mb-3 text-center">{status}</div>
-      <div className="d-flex">
+      <div className="d-flex gap-2 mb-2">
         {renderSquare(0)}
         {renderSquare(1)}
         {renderSquare(2)}
       </div>
-      <div className="d-flex">
+      <div className="d-flex gap-2 mb-2">
         {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
       </div>
-      <div className="d-flex">
+      <div className="d-flex gap-2 mb-2">
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
@@ -78,12 +80,10 @@ function calculateWinner(squares) {
       // Retorna o objeto contendo o vencedor e o array com as 3 posições premiadas
       return {
         winner: squares[a],
-        line: [a, b, c]
+        linha: lines[i]
       };
     }
   }
 
   return null;
 }
-
-

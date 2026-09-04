@@ -9,7 +9,7 @@ import styles from './Square.module.css'
 
 function Square({ value, onSquareClick, isWinning}) {
 
-  let squareClasses = `btn btn-outline-dark ${styles.square}`;
+  let squareClasses = `btn ${styles.square}`;
 
   // Caso este quadrado faça parte da trinca vencedora, adicionamos classes de destaque
   // 'bg-success' e 'text-white' são classes utilitárias nativas do Bootstrap
