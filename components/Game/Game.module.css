@@ -94,4 +94,11 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #3f022d;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
 }

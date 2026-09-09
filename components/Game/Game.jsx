@@ -47,16 +47,17 @@ export default function Game() {
   }
 
   //Avança para a PRÓXIMA partida do campeonato (atualiza placar e reseta tabuleiro)
-  function handleProximaPartida(vencedor, deuEmpate) {
+  function handleProximaPartida() {
+    
     // Atualiza a pontuação no placar acumulado
-    setPlacar((prev) => ({
-      x: vencedor === 'X' ? prev.x + 1 : prev.x,
-      o: vencedor === 'O' ? prev.o + 1 : prev.o,
-      empates: deuEmpate ? prev.empates + 1 : prev.empates,
+    setPlacar((placar) => ({
+      x: infoVitoria === 'X' ? placar.x + 1 : placar.x,
+      o: infoVitoria === 'O' ? placar.o + 1 : placar.o,
+      empates: deuEmpate ? placar.empates + 1 : placar.empates,
     }));
 
     // Registra que mais uma partida foi concluída
-    setPartidasJogadas((prev) => prev + 1);
+    setPartidasJogadas((partidasJogadas) => partidasJogadas + 1);
     // Reseta o tabuleiro para iniciar a nova partida do zero
     setHistory([Array(9).fill(null)]);
     setCurrentMove(0);
@@ -108,7 +109,7 @@ export default function Game() {
       /* Tela de Fim de Campeonato com utilitários de alerta do Bootstrap */
       <div className="alert alert-success text-center p-4 w-100">
         <h2>🏆 Campeonato Encerrado!</h2>
-        <button className="btn btn-primary mt-3" onClick={handleZerarCampeonato}>
+        <button className={styles.gameProximaPartida} onClick={handleZerarCampeonato}>
           Iniciar Novo Campeonato
         </button>
       </div>
