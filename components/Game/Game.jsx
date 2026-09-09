@@ -85,16 +85,17 @@ export default function Game() {
     );
   });
 
+
+
+
   return (
-  // Container principal do jogo estilizado via CSS Modules
+  /* Container principal centralizado via CSS Module */
   <div className={styles.gameContainer}>
-    {/* Título principal estilizado */}
+    
+    {/* Título estilizado do jogo */}
     <h1 className={styles.gameTitle}>Jogo da Velha</h1>
 
-    {/* ==========================================
-        BLOCO 1: PLACAR GERAL DO CAMPEONATO (Bootstrap Card)
-        ========================================== */}
-    <div className="card p-3 mb-4 text-center shadow-sm">
+    <div className={`card p-3 mb-4 text-center shadow-sm ${styles.scoreCard}`}>
       <h4>Placar do Campeonato (Partida {partidasJogadas + 1} de 5)</h4>
       <div className="d-flex justify-content-center gap-3 mt-2">
         <span className="badge bg-primary fs-6">Jogador X: {placar.x}</span>
@@ -103,44 +104,39 @@ export default function Game() {
       </div>
     </div>
 
-    {/* ==========================================
-        BLOCO 2: RENDERIZAÇÃO CONDICIONAL (Ternário)
-        Se campeonatoFinalizado for true -> Exibe Card do Campeão
-        Se for false -> Exibe o Tabuleiro e o Histórico
-        ========================================== */}
     {campeonatoFinalizado ? (
-      /* Tela de Fim de Campeonato */
-      <div className="alert alert-success text-center p-4">
+      /* Tela de Fim de Campeonato com utilitários de alerta do Bootstrap */
+      <div className="alert alert-success text-center p-4 w-100">
         <h2>🏆 Campeonato Encerrado!</h2>
         <button className="btn btn-primary mt-3" onClick={handleZerarCampeonato}>
           Iniciar Novo Campeonato
         </button>
       </div>
     ) : (
-      /* Grid do Bootstrap: divide a tela em duas colunas no computador (md) */
-      <div className="row mt-4">
+      /* Container flex do CSS Module que posiciona o Histórico na esquerda e o Tabuleiro na direita */
+      <div className={styles.game}>
         
-        {/* COLUNA ESQUERDA (7 colunas): Tabuleiro + Botão de Próxima Partida */}
-        <div className="col-md-7 d-flex flex-column align-items-center mb-3">
+        {/* LADO ESQUERDO: Painel do Histórico de Jogadas (Declarado PRIMEIRO) */}
+        <div className={styles.gameInfo}>
+          <h4>Histórico da Partida</h4>
+          {/* A lista herda os estilos dos botões definidos em .gameInfo button no CSS */}
+          <ol className="list-unstyled d-flex flex-column gap-2">{moves}</ol>
+        </div>
+
+        {/* LADO DIREITO: Tabuleiro de Jogo (Declarado em SEGUIDA) */}
+        <div className={styles.gameBoard}>
           <Board 
             xIsNext={xIsNext} 
             squares={currentSquares} 
             onPlay={handlePlay} 
           />
 
-          {/* O botão verde só surge quando a rodada atual termina */}
+          {/* Botão verde do Bootstrap que aparece ao encerrar a rodada */}
           {rodadaEncerrada && (
-            <button className="btn btn-success mt-3" onClick={handleProximaPartida}>
-              Confirmar Resultado e Ir para Próxima Partida ➡️
+            <button className={styles.gameProximaPartida} onClick={handleProximaPartida}>
+              Próxima Partida
             </button>
           )}
-        </div>
-
-        {/* COLUNA DIREITA (5 colunas): Histórico de Jogadas (Viagem no Tempo) */}
-        <div className="col-md-5">
-          <h4 className="mb-3">Histórico da Partida</h4>
-          {/* Lista de botões gerados pelo .map() */}
-          <ol className="list-unstyled">{moves}</ol>
         </div>
 
       </div>

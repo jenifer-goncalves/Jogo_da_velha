@@ -1,14 +1,15 @@
-/* Container que centraliza o jogo inteiro */
+/* Container principal do jogo: Centraliza todo o bloco na tela */
 .gameContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Título principal do jogo */
+/* Título principal da aplicação */
 .gameTitle {
   font-size: 2.2rem;
   font-weight: 700;
@@ -17,39 +18,41 @@
   text-align: center;
 }
 
-/* Layout que coloca o Tabuleiro e o Histórico lado a lado */
+/* Card customizado para o Placar Geral do Campeonato (Efeito Vidro / Glassmorphism) */
+.scoreCard {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: aliceblue;
+  width: 100%;
+}
+
+/* Layout Flexbox que posiciona o Histórico (Esquerda) e o Tabuleiro (Direita) lado a lado */
 .game {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Alinha o topo do histórico com o topo do tabuleiro */
-  justify-content: center;
-  gap: 32px;
+  flex-direction: row;        /* Exibe os filhos em linha */
+  align-items: flex-start;   /* Alinha o topo do histórico com o topo do tabuleiro */
+  justify-content: center;    /* Centraliza o conjunto na tela */
+  gap: 28px;                  /* Espaçamento entre os dois blocos */
   width: 100%;
-  /* Permite empilhar em telas de celulares menores */
-  flex-wrap: wrap;
+  flex-wrap: wrap;            /* Permite empilhar em telas de celular */
 }
 
-/* Área onde o tabuleiro é renderizado */
-.gameBoard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Painel de Histórico (Viagem no Tempo - RF08) */
+/* Painel de Histórico (Lado Esquerdo - Compacto) */
 .gameInfo {
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
   padding: 18px;
   border-radius: 12px;
-  min-width: 200px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 220px;               /* Largura fixa menor para ser secundário */
+  flex-shrink: 0;             /* Impede que o painel encolha além de 220px */
 }
 
-/* Título da seção de histórico */
-.gameInfo h2, .gameInfo h3 {
-  font-size: 1rem;
+/* Título interno do painel de histórico */
+.gameInfo h4 {
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -57,17 +60,7 @@
   color: aliceblue;
 }
 
-/* Estilo da lista ordenada de jogadas */
-.gameInfo ol {
-  padding-left: 20px;
-  font-size: 0.9rem;
-}
-
-.gameInfo li {
-  margin-bottom: 8px;
-}
-
-/* Estilo dos botões de navegação no histórico */
+/* Estilização automatizada para os botões dentro da lista de histórico */
 .gameInfo button {
   background: #502d55;
   color: #ffffff;
@@ -83,7 +76,22 @@
   text-align: left;
 }
 
+/* Efeito hover nos botões do histórico */
 .gameInfo button:hover {
   background: #6e3e75;
   transform: translateX(2px);
+}
+
+/* Área onde o tabuleiro é renderizado (Lado Direito - Destaque Principal) */
+.gameBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;               /* Ocupa o restante do espaço disponível */
+}
+
+.gameProximaPartida{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
