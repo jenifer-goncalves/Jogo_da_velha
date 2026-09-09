@@ -1,0 +1,89 @@
+/* Container que centraliza o jogo inteiro */
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Título principal do jogo */
+.gameTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: aliceblue;
+  text-align: center;
+}
+
+/* Layout que coloca o Tabuleiro e o Histórico lado a lado */
+.game {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Alinha o topo do histórico com o topo do tabuleiro */
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  /* Permite empilhar em telas de celulares menores */
+  flex-wrap: wrap;
+}
+
+/* Área onde o tabuleiro é renderizado */
+.gameBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Painel de Histórico (Viagem no Tempo - RF08) */
+.gameInfo {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  padding: 18px;
+  border-radius: 12px;
+  min-width: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Título da seção de histórico */
+.gameInfo h2, .gameInfo h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 6px;
+  color: aliceblue;
+}
+
+/* Estilo da lista ordenada de jogadas */
+.gameInfo ol {
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+
+.gameInfo li {
+  margin-bottom: 8px;
+}
+
+/* Estilo dos botões de navegação no histórico */
+.gameInfo button {
+  background: #502d55;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+  width: 100%;
+  text-align: left;
+}
+
+.gameInfo button:hover {
+  background: #6e3e75;
+  transform: translateX(2px);
+}

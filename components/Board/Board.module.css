@@ -1,12 +1,24 @@
+/* Container vertical que agrupa todas as linhas do tabuleiro */
 .boardContainer {
   display: flex;
-  flex-direction: column; /* Organiza as linhas na vertical */
-  gap: 3px;               /* Define o espaçamento VERTICAL entre cada linha */
-  align-items: center;    /* Centraliza o conteúdo horizontalmente */
+  flex-direction: column;
+  gap: 8px; /* Espaçamento constante entre as linhas */
+  align-items: center;
 }
 
-/* Classe aplicada em cada div de linha (board-row) */
+/* Container horizontal para os 3 quadrados de cada linha */
 .boardRow {
-  display: flex;          /* Organiza os 3 quadrados na horizontal */
-  gap: 3px;               /* Define o espaçamento HORIZONTAL entre cada quadrado */
+  display: flex;
+  gap: 8px; /* Espaçamento constante entre os quadrados da mesma linha */
+}
+
+/* Exibição da mensagem (Próximo Jogador / Vencedor / Empate) */
+.status {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: aliceblue;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }

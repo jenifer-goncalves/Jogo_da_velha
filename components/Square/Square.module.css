@@ -1,24 +1,39 @@
+/* Estilo base de cada botão do tabuleiro */
 .square {
-  width: 80px;                  
-  height: 80px;                 
-  font-size: 2.5rem;            
-  font-weight: bold;            
-  padding: 0;                  
-  display: inline-flex;         
-  align-items: center;         
-  justify-content: center;     
-  line-height: 1;      
-  vertical-align: top;        /* Anula o alinhamento por linha de base (evita que o botão desça no clique) */
-  flex-shrink: 0;             /* Impede que a linha 'd-flex' esmague o botão */
-  box-sizing: border-box;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);   
-  border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  border: 2px solid #502d55;
+  color: #333333;
+  font-size: 2.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  /* Flexbox garante centralização perfeita do 'X' e 'O' no meio do botão */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Impede que o botão encolha em telas menores */
+  flex-shrink: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-/* Estilo complementar para os quadrados da linha vencedora (Atende ao RF10) */
+/* Efeito ao passar o mouse por cima do quadrado */
+.square:hover {
+  background-color: #f0e6f2;
+}
+
+/* Estilo do botão ao ser pressionado */
+.square:active {
+  transform: scale(0.96);
+}
+
+/* Estilo aplicado aos 3 quadrados vencedores (RF10) */
 .winningSquare {
-  transform: scale(1.05);       /* Destaque sutil aumentando ligeiramente o tamanho */
-  transition: transform 0.2s;   /* Animação suave na transição de vitória */
-  background-color: #198754;
-  color: #fff;
+  background-color: #198754; /* Verde sucesso */
+  color: #ffffff;
+  border-color: #0f5132;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(25, 135, 84, 0.4);
 }

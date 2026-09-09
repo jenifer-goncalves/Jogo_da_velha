@@ -4,6 +4,7 @@ import Square from '../Square/Square.jsx'
 function Board({ xIsNext, squares, onPlay }) {
   // Executa a função que calcula o vencedor e retorna o objeto ou null
   const infoVitoria = calculateWinner(squares);
+  const deuEmpate = !infoVitoria && squares.every((square) => square !== null);
 
   function handleClick(i) {
     // Bloqueia a jogada se já houver um vencedor ou se o quadrado já estiver ocupado
@@ -32,26 +33,33 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (infoVitoria) {
     status = 'Vencedor: ' + infoVitoria.winner;
-  } else if (!infoVitoria) {
-    status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O');
+  } else if (deuEmpate) {
+    status = 'Empate! Deu velha...';
   } else {
-    status = 'Empate: deu velha'
+    status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
     <div className={styles.boardContainer}>
-      <div className="h4 mb-3 text-center">{status}</div>
-      <div className="d-flex gap-2 mb-2">
+      {/* Mensagem de status da partida */}
+      <div className={styles.status}>{status}</div>
+
+      {/* PRIMEIRA LINHA (Quadrados 0, 1 e 2) */}
+      <div className={styles.boardRow}>
         {renderSquare(0)}
         {renderSquare(1)}
         {renderSquare(2)}
       </div>
-      <div className="d-flex gap-2 mb-2">
+
+      {/* SEGUNDA LINHA (Quadrados 3, 4 e 5) */}
+      <div className={styles.boardRow}>
         {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
       </div>
-      <div className="d-flex gap-2 mb-2">
+
+      {/* TERCEIRA LINHA (Quadrados 6, 7 e 8) */}
+      <div className={styles.boardRow}>
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
@@ -66,7 +74,7 @@ export default Board
 // FUNÇÃO AUXILIAR: calculateWinner
 // ==========================================
 // Algoritmo que checa se há uma combinação vencedora no tabuleiro
-function calculateWinner(squares) {
+export function calculateWinner(squares) {
   // Todas as 8 combinações possíveis de vitória no Jogo da Velha
   const lines = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontais

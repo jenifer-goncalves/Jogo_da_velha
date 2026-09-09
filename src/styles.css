@@ -1,174 +1,23 @@
+/* Importação da fonte Montserrat via Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Reset universal: Garante que todos os elementos calculem largura/altura incluindo bordas */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Configuração do corpo da página: Centraliza todo o conteúdo do jogo vertical e horizontalmente */
 body {
   font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Cor e gradiente radial roxo original */
   background: #5B3765;
-  background: radial-gradient(circle,rgba(91, 55, 101, 1) 31%, rgba(158, 104, 153, 1) 85%, rgba(186, 136, 174, 1) 95%);
-  /* Outra possível opção de cor */
-  /* background: #CA2851;
-  background: radial-gradient(circle,rgba(202, 40, 81, 1) 6%, rgba(255, 103, 102, 1) 54%, rgba(255, 177, 115, 1) 100%); */
+  background: radial-gradient(circle, rgba(91, 55, 101, 1) 31%, rgba(158, 104, 153, 1) 85%, rgba(186, 136, 174, 1) 95%);
   color: aliceblue;
+  padding: 20px;
 }
-
-h1 {
-  margin-top: 0;
-  font-size: 22px;
-  color: aliceblue;
-  font-family: "Montserrat", sans-serif;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 16px;
-}
-
-h5 {
-  margin-top: 0;
-  font-size: 14px;
-}
-
-h6 {
-  margin-top: 0;
-  font-size: 12px;
-}
-
-code {
-  font-size: 1.2em;
-}
-
-ul {
-  padding-inline-start: 20px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  margin: 20px;
-  padding: 0;
-}
-
-.square {
-  background: #ffffff;
-  border: 2px solid #502d55;
-  color: #333;
-  font-size: 2.2rem;
-  font-weight: bold;
-  border-radius: 10px;
-  width: 80px;  /* Tamanho aumentado do quadrado */
-  height: 80px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.2s;
-}
-
-.square:hover {
-  background-color: #f0e6f2;
-}
-
-
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-
-.status {
-  margin-bottom: 14px;
-  font-size: 1.1rem;
-  text-align: center;
-  color: aliceblue;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-
-.board-row {
-  display: flex;
-}
-
-.game-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
-.game-title {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* Coloca o Tabuleiro e o Histórico lado a lado */
-.game {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Alinha o histórico no topo do tabuleiro */
-  gap: 32px;
-}
-
-/* Painel de Histórico mais compacto */
-.game-info {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 16px;
-  border-radius: 8px;
-  min-width: 160px;
-}
-
-.game-info h3 {
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 6px;
-  text-align: left;
-}
-
-.game-info ol {
-  padding-left: 18px;
-  font-size: 0.85rem;
-}
-
-.game-info li {
-  margin-bottom: 6px;
-}
-
-.game-info button {
-  background: #502d55;
-  color: #fff;
-  border: none;
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.8rem;
-  transition: background 0.2s;
-}
-
-.game-info button:hover {
-  background: #f0a4a4;
-}
-
