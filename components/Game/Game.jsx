@@ -97,11 +97,11 @@ export default function Game() {
     <h1 className={styles.gameTitle}>Jogo da Velha</h1>
 
     <div className={`card p-3 mb-4 text-center shadow-sm ${styles.scoreCard}`}>
-      <h4>Placar do Campeonato (Partida {partidasJogadas + 1} de 5)</h4>
-      <div className="d-flex justify-content-center gap-3 mt-2">
-        <span className="badge bg-primary fs-6">Jogador X: {placar.x}</span>
-        <span className="badge bg-secondary fs-6">Empates: {placar.empates}</span>
-        <span className="badge bg-danger fs-6">Jogador O: {placar.o}</span>
+      <h4 className="card-title mb-3">Placar do Campeonato (Partida {partidasJogadas + 1} de 5)</h4>
+      <div className="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+        <span className="badge bg-primary p-2 fs-6">Jogador X: {placar.x}</span>
+        <span className="badge bg-secondary p-2 fs-6">Empates: {placar.empates}</span>
+        <span className="badge bg-danger p-2 fs-6">Jogador O: {placar.o}</span>
       </div>
     </div>
 
