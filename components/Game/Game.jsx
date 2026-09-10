@@ -48,6 +48,7 @@ export default function Game() {
 
   //Avança para a PRÓXIMA partida do campeonato (atualiza placar e reseta tabuleiro)
   function handleProximaPartida() {
+    console.log('Teste: O botão Próxima Partida foi Clicado!');
     
     // Atualiza a pontuação no placar acumulado
     setPlacar((placar) => ({
@@ -87,7 +88,7 @@ export default function Game() {
   });
 
 
-
+  console.log('Objeto placar atual:', placar);
 
   return (
   /* Container principal centralizado via CSS Module */
