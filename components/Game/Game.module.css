@@ -30,12 +30,12 @@
 /* Layout Flexbox que posiciona o Histórico (Esquerda) e o Tabuleiro (Direita) lado a lado */
 .game {
   display: flex;
-  flex-direction: row;        /* Exibe os filhos em linha */
-  align-items: flex-start;   /* Alinha o topo do histórico com o topo do tabuleiro */
-  justify-content: center;    /* Centraliza o conjunto na tela */
-  gap: 28px;                  /* Espaçamento entre os dois blocos */
+  flex-direction: row;       
+  align-items: flex-start;   
+  justify-content: center;   
+  gap: 28px;                  
   width: 100%;
-  flex-wrap: wrap;            /* Permite empilhar em telas de celular */
+  flex-wrap: wrap;            
 }
 
 /* Painel de Histórico (Lado Esquerdo - Compacto) */
@@ -46,8 +46,8 @@
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 220px;               /* Largura fixa menor para ser secundário */
-  flex-shrink: 0;             /* Impede que o painel encolha além de 220px */
+  width: 220px;               
+  flex-shrink: 0;             
 }
 
 /* Título interno do painel de histórico */
@@ -87,7 +87,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-grow: 1;               /* Ocupa o restante do espaço disponível */
+  flex-grow: 1;              
 }
 
 .gameProximaPartida{
